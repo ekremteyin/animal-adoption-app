@@ -13,26 +13,29 @@ HiPet, Django framework'ü kullanılarak geliştirilmiş açık kaynaklı bir we
 
 ## 🚀 Kurulum Talimatları
 
-### 1. Depoyu Klonlayın
+## 1. Depoyu Klonlayın
 ```bash
 git clone https://github.com/ekremteyin/animal-adoption-app.git
 cd animal-adoption-app/HiPet
 
 
-### Sanal Ortam Oluşturun ve Aktifleştirin
+## 2. Sanal Ortam Oluşturun ve Aktifleştirin
+ ```bash
 python -m venv env
 env\Scripts\activate  # macOS/Linux: source env/bin/activate
 
-### Gereksinimleri Yükleyin
+## 3. Gereksinimleri Yükleyin
+```bash
 pip install -r requirements.txt
 
-### Veritabanını Başlatın
+## 4. Veritabanını Başlatın
+```bash
 python manage.py migrate
 
-### Geliştirme Sunucusunu Başlatın
+## Geliştirme Sunucusunu Başlatın
 python manage.py runserver
 
-### Admin Paneli
+## Admin Paneli
 python manage.py createsuperuser
 
 ## ⚙️ Gereksinimler
