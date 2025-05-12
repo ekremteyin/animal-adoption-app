@@ -1,0 +1,314 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <link rel="icon" href="{% static 'img/logo.jpg' %}" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HiPet</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/sahiplenme.css' %}">
+    <link href="{% static 'css/home.css' %}" rel="stylesheet">
+     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="lib/flaticon/font/flaticon.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="{% static 'js/home.js' %}"></script>
+
+    <style>
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body, h1, h2, ul {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.arkaplan {
+    background-color: #76cf8e;
+}
+
+.kapsayici {
+    width: 960px;
+    margin: 0 auto;
+}
+
+.ust {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 200px;
+}
+
+.ust .logo {
+    text-align: center;
+    color: #fff;
+}
+
+.ust .logo h1 {
+    font-size: 4rem;
+    letter-spacing: .5rem;
+}
+
+.ust .logo h1::first-letter {
+    color: #3061c9;
+}
+
+#hiHeader {
+    color: #3061c9;
+}
+
+#hiHeader:hover {
+    background-color: #FCB941;
+    color: #3061c9;
+}
+
+.ust .logo h1:hover::first-letter {
+    background-color: #FCB941;
+    color: #30619c;
+}
+
+.ust .logo h2 {
+    font-size: 2.4rem;
+}
+
+.ust .menu ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.ust .menu ul li {
+    margin: 0 1rem;
+}
+
+.ust .menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 2.1rem;
+    white-space: nowrap; /* Bu satır yazıların tek satırda kalmasını sağlar */
+}
+
+.ust .menu ul li a:hover {
+    color: #FCB941;
+}
+
+.orta .bolum1 {
+    margin-top: 20px;
+    border: 10px solid #FCB941;
+    padding: 20px;
+}
+
+.orta .bolum1 img {
+    display: block;
+    width: 100%;
+}
+
+.orta .bolum2 {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.orta .bolum2 .kutu {
+    flex-basis: 290px;
+}
+
+.orta .bolum2 .kutu h2 {
+    font-size: 2rem;
+}
+
+.orta .bolum2 .kutu p {
+    font-size: 1.6rem;
+}
+
+.orta .bolum3 {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.orta .bolum3 h1 {
+    font-size: 2.5rem;
+}
+
+.orta .bolum3 p {
+    font-size: 1.6rem;
+}
+
+.alt {
+    margin-top: 20px;
+    padding: 20px 0;
+    display: flex;
+    gap: 20px;
+}
+
+.alt .baglanti {
+    flex-grow: 1;
+}
+
+.alt .baglanti ul li {
+    border-bottom: dotted 1px #FCB941;
+    margin: 5px 0;
+}
+
+.alt .baglanti a {
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: #3061c9;
+}
+
+.cizgi {
+    border-top: dotted 1px #3061c9;
+    margin: 20px 0;
+}
+
+.alt-kenar-10 {
+    border-bottom: 10px solid #3061c9;
+}
+    </style>
+</head>
+<body>
+{% block css %}
+{% endblock css %}
+
+<!-- sayfa üstü-->
+<div class="arkaplan alt-kenar-10">
+    <div class="ust kapsayici">
+        <div class="logo_img">
+            <a href="{% url 'home' %}"><img src="{% static 'img/logophoto.png' %}" alt="logo" width="210" height="210"></a>
+        </div>
+        <div class="logo">
+            <h1><span id="hiHeader">Hi</span>Pet.com</h1>
+            <h2>can dostlarımız için</h2>
+        </div>
+        <div class="menu">
+            <ul>
+                {% if user.is_authenticated %}
+                <li><a>Hoşgeldiniz {{ user.username }}</a></li>
+                <li><a href="{% url 'logout' %}">Çıkış Yap</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Oturum Aç</a></li>
+                <li><a href="{% url 'register' %}">Kayıt Ol</a></li>
+                {% endif %}
+                <li><a href="{% url 'sahiplenme' %}">Sahiplen</a></li>
+                <li><a href="{% url 'mama' %}">Mama Bağışı</a></li>
+                <li><a href="{% url 'acil_durum' %}">Acil Durum</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% block content %}
+{% endblock %}
+
+<!-- sayfa altı-->
+<div class="arkaplan">
+    <div class="alt kapsayici">
+        <div class="baglanti">
+            <ul>
+                <h2><a href="#">Hakkımızda</a></h2>
+                <li><a href="#">Hakkımızda</a></li>
+                <li><a href="#">İletişim</a></li>
+                <li><a href="#">Gizlilik Politikası</a></li>
+                <li><a href="#">Üyelik Sözleşmesi</a></li>
+                <li><a href="#">Kullanım Koşulları</a></li>
+                <li><a href="#">İlan Verme Kuralları</a></li>
+                <li><a href="#">Blog</a></li>
+            </ul>
+        </div>
+        <div class="baglanti">
+            <ul>
+                <h2><a href="#">Ilanlar</a></h2>
+                <li><a href="#">Kedi</a></li>
+                <li><a href="#">Kopek</a></li>
+                <li><a href="#">Muhabbet Kuşu</a></li>
+                <li><a href="#">Papagan</a></li>
+            </ul>
+        </div>
+        <div class="baglanti">
+            <ul>
+                <h2><a href="#">Kedi Ilanlari</a></h2>
+                <li><a href="#">British Shorthair</a></li>
+                <li><a href="#">Scottish Fold</a></li>
+                <li><a href="#">İran Kedisi</a></li>
+                <li><a href="#">Siyam Kedisi</a></li>
+                <li><a href="#">Maine Coon</a></li>
+                <li><a href="#">Van Kedisi</a></li>
+                <li><a href="#">Sfenks Kedisi</a></li>
+                <li><a href="#">Chinchilla</a></li>
+                <li><a href="#">Ankara Kedisi</a></li>
+
+
+            </ul>
+        </div>
+        <div class="baglanti">
+            <ul>
+                <h2><a href="#">Kopek Ilanlari</a></h2>
+                <li><a href="#">Pomeranian</a></li>
+                <li><a href="#">Rottweiler</a></li>
+                <li><a href="#">Pug</a></li>
+                <li><a href="#">Doberman</a></li>
+                <li><a href="#">Golden</a></li>
+                <li><a href="#">Sibirya Kurdu</a></li>
+                <li><a href="#">Toy Poodle</a></li>
+                <li><a href="#">Kangal</a></li>
+                <li><a href="#">Cane Corso</a></li>
+                <li><a href="#">Beagle</a></li>
+                <li><a href="#">Çin Aslanı</a></li>
+                <li><a href="#">Maltese Terrier</a></li>
+                <li><a href="#">Alman Kurdu</a></li>
+                <li><a href="#">Chihuahua</a></li>
+                <li><a href="#">Chow Chow</a></li>
+                <li><a href="#">French Bulldog</a></li>
+                 <li><a href="#">Jack Russel</a></li>
+                 <li><a href="#">Maltipoo</a></li>
+            </ul>
+        </div>
+        <br>
+        <div class="baglanti">
+            <ul>
+                <h2><a href="#">Cinsler</a></h2>
+                <li><a href="#">Köpek Cinsleri</a></li>
+                <li><a href="#">Süs Köpeği</a></li>
+                <li><a href="#">Yavru Köpek</a></li>
+                <li><a href="#">Köpek Sahiplenme</a></li>
+                <li><a href="#">Kedi Sahiplenme</a></li>
+                <li><a href="#">Golden Köpek</a></li>
+                <li><a href="#">Boo Köpek</a></li>
+                <li><a href="#">Köpek Fiyatları</a></li>
+                <li><a href="#">Kedi Cinsleri</a></li>
+                <li><a href="#">Yavru Kedi</a></li>
+                <li><a href="#">Kedi Sahiplenme</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

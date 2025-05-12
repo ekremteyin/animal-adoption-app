@@ -1,0 +1,253 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .bg-success {
+        background-color: #76CF8E !important;
+    }
+    .align-buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 5rem;
+        }
+    .btn-outline-light {
+            background-color: #4682B4; /* Mavi arka plan rengi */
+            color: white; /* Beyaz metin rengi */
+            border-color: 4682B4; /* Mavi kenar rengi */
+        }
+
+        .btn-outline-light:hover {
+            background-color: 4682B4; /* Daha koyu mavi arka plan rengi hover durumda */
+            border-color: 4682B4; /* Daha koyu mavi kenar rengi hover durumda */
+        }
+.button {
+  position: relative;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  padding-block: 0.5rem;
+  padding-inline: 1.25rem;
+  background-color: rgb(0 107 179);
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffff;
+  gap: 10px;
+  font-weight: bold;
+  border: 3px solid #ffffff4d;
+  outline: none;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  transition: all 0.3s ease-in-out;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  border-color: #fff9;
+}
+
+.button:hover .icon {
+  transform: translate(4px);
+}
+
+.button:hover::before {
+  animation: shine 1.5s ease-out infinite;
+}
+
+.button::before {
+  content: "";
+  position: absolute;
+  width: 100px;
+  height: 100%;
+  background-image: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0) 30%,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0) 70%
+  );
+  top: 0;
+  left: -100px;
+  opacity: 0.6;
+}
+
+@keyframes shine {
+  0% {
+    left: -100px;
+  }
+
+  60% {
+    left: 100%;
+  }
+
+  to {
+    left: 100%;
+  }
+}
+
+
+</style>
+<div class="container-fluid bg-success py-5 mb-5 hero-header">
+    <div class="container py-5">
+        <div class="row justify-content-start">
+            <div class="col-lg-8 text-center text-lg-start">
+                <h1 class="display-1 text-uppercase mb-lg-4">HiPet Olanakları</h1>
+
+                <div class="d-flex align-items-start justify-content-between">
+                    <p class="fs-4 text-white mb-lg-4">
+                        Hipet ile evcil hayvanınızı sahiplendirebilir, kısa süreli barınacak
+                        sahip bulabilirsiniz. Evcil hayvan sahiplenebilirsiniz.
+                        <br><br>
+                        Ayrıca HiPet olarak sokaktaki canlarımızı da düşünüyoruz. Mama bağışı acil durum gibi
+                        özelliklerimizle hayvanlarla yardımlaşmak için tek adresiniz olmayı çabalıyoruz.
+                    </p>
+                    <hr>
+                    <a href="{% url 'sahiplenme' %}" class="button">
+                        <span style="display: inline-block;">İlan Ver</span>
+                        <svg fill="currentColor" viewBox="0 0 24 24" class="icon">
+                            <path clip-rule="evenodd"
+                                  d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm4.28 10.28a.75.75 0 000-1.06l-3-3a.75.75 0 10-1.06 1.06l1.72 1.72H8.25a.75.75 0 000 1.5h5.69l-1.72 1.72a.75.75 0 101.06 1.06l3-3z"
+                                  fill-rule="evenodd"></path>
+                        </svg>
+                    </a>
+
+                </div>
+
+
+                <div class="d-flex align-items-center justify-content-start">
+                    <a href="" class="btn btn-outline-light border-2 py-md-3 px-md-5 me-3">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Hero End -->
+
+
+<!-- About Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="row gx-5">
+            <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 500px;">
+                <div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded" src="{% static 'img/kedy.jpg' %}"
+                         style="object-fit: cover;">
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="border-start border-5 border-primary ps-5 mb-5">
+
+                    <h1 class="display-5 text-uppercase mb-0">Evcil Hayvanlarınızı Her Zaman Mutlu Ediyoruz</h1>
+                </div>
+                <h4 class="text-body mb-4">Evcil hayvanlarınızın mutluluğu bizim için her şeyden önemli. Onların
+                    ihtiyaçlarını anlıyor ve onlara en iyi hizmeti sunmak için buradayız. Sıcak bir yuva, sevgi dolu bir
+                    ortam ve profesyonel bakım ile dostlarınızı her zaman mutlu ediyoruz. Bizimle, evcil hayvanlarınızın
+                    her anının keyifle dolu olmasını sağlıyoruz.</h4>
+                <br>
+                <h4>Evcil hayvanlarınızın mutluluğu ve sağlığı, HiPet ile her zaman güvende. Geçici sahiplendirme, barındırma ve mama bağışı gibi hizmetlerimiz sayesinde, sevimli dostlarınızın ihtiyaçlarını en iyi şekilde karşılıyoruz. Acil durumlarda da uzman ekibimiz, hızlı ve etkili müdahalelerle yanınızda. HiPet, evcil hayvanlarınıza sadece bir yuva değil, aynı zamanda sevgi ve güven dolu bir ortam sunar. Bu sayede siz işlerinizi hallederken veya seyahatteyken, dostlarınızın güvende olduğunu bilmenin rahatlığını yaşarsınız. Mama bağışı kampanyalarımızla ise, yardıma muhtaç hayvanlara destek olabilirsiniz. HiPet ile evcil hayvanlarınız her zaman en iyi bakımı alır ve sevgiyle büyür. Bizimle, evcil dostlarınızın yaşam kalitesini artırın ve onları en iyi şekilde koruyun. HiPet, onların mutluluğu ve sağlığı için burada.</h4>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- About End -->
+
+
+<!-- Services Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 600px;">
+            <h6 class="text-primary text-uppercase">Services</h6>
+            <h1 class="display-5 text-uppercase mb-0">MÜKEMMEL PET BAKIM HİZMETLERİMİZ</h1>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-house display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">PET YATILI</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-food display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Evcil Hayvan Besleme</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-grooming display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Evcil Hayvan Bakımı</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="service-item bg-light d-flex p-4">
+                    <i class="flaticon-cat display-1 text-primary me-4"></i>
+                    <div>
+                        <h5 class="text-uppercase mb-3">Evcil Hayvan Eğitimi</h5>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Services End -->
+
+
+<!-- Products Start -->
+<div class="container-fluid py-5">
+    <div class="container">
+        <div class="border-start border-5 border-primary ps-5 mb-5" style="max-width: 400px;">
+            <h1 class="display-5 text-uppercase mb-0">En İyi Arkadaşlarınız</h1>
+        </div>
+        <div class="d-flex justify-content-between">
+            <div class="pb-5">
+                <div class="product-item bg-light text-center" style="width: 400px; margin: 0 auto;">
+                    <img class="img-fluid mb-4" src="{% static 'img/kedi.jpg' %}" alt="" width="400px">
+                    <h2 class="text-uppercase text-primary">Sahiplen</h2>
+                    <h5 class="text-dark mb-0">Siyam, British Scotish gibi kedi cinslerinin neredeyse hepsi dost
+                        canlısıdır ve evde beslenilmeye ihtiyaç duyar. Onları sevdikçe huzur bulduğunuzu
+                        hissedeceksiniz.</h5>
+                </div>
+            </div>
+            <div class="pb-5">
+                <div class="product-item bg-light text-center" style="width: 400px; margin: 0 auto;">
+                    <img class="img-fluid mb-4" src="{% static 'img/slider2.jpg' %}" alt="" width="400px">
+                    <h2 class="text-uppercase text-primary">Sahiplendir</h2>
+                    <h5 class="text-dark mb-0">Golden Retriever, Argentina Dogo, Samoyet gibi köpek cinslerinin
+                        neredeyse hepsi çok sadıktır ve bir sahibe ihtiyaç duyar. Onlarla ilgilendikçe hayatınızda
+                        sorumluluk bilinciniz arttığına ve bir arkadaşa sahip olduğunuzu hissedeceksiniz.</h5>
+                </div>
+            </div>
+            <div class="pb-5">
+                <div class="product-item bg-light text-center" style="width: 400px; margin: 0 auto;">
+                    <img class="img-fluid mb-4" src="{% static 'img/depo.jpg' %}" alt="" width="400px">
+                    <h2 class="text-uppercase text-primary">Mama Bağışı ve Acil Durum</h2>
+                    <h5 class="text-dark mb-0">HiPet olarak sokaktaki canlarımızı da düşünüyoruz. Mama bağışı
+                        seçeneğinin yanında acil durum ile sokakta gördüğünüz yaralı veya aç canlarımızı bize
+                        bildirin.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+<!-- Products End -->
+
+{% endblock %}

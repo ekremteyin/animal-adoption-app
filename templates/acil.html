@@ -1,0 +1,52 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/mama.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/acil.css' %}">
+
+
+{% endblock css %}
+{% block content %}
+
+     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Mesajları 4 saniye sonra kaldıran fonksiyon
+            setTimeout(function() {
+                var messages = document.querySelectorAll('.alert');
+                messages.forEach(function(message) {
+                    message.style.transition = "opacity 0.5s ease";
+                    message.style.opacity = 0;
+                    setTimeout(function() {
+                        message.remove();
+                    }, 500);
+                });
+            }, 4000);
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Acil Durum Formu</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Gönder</button>
+        </form>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div id="message" class="container">
+        <div {% if message.tags %} class="alert alert-{{ message.tags }}"{% endif %} role="alert">
+          <button type="button" class="close" data-dismiss="alert">
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error: {% endif %}
+            <strong>{{ message }}</strong>
+          </button>
+        </div>
+        </div>
+        {% endfor %}
+    {% endif %}
+</body>
+
+
+{% endblock %}

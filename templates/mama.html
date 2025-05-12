@@ -1,0 +1,64 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block content %}
+<body>
+<style>
+    th, td {
+        font-size: 25px; /* Metin boyutunu ayarla */
+        padding: 10px;
+    }
+    label {
+        font-size: 18px; /* Label metin boyutunu ayarla */
+    }
+</style>
+<h1>Mamalar</h1>
+<br>
+<h1><strong>Mama</strong> seçiniz:</h1>>
+
+<form action="{% url 'mama' %}" method="POST">
+    {% csrf_token %}
+    <input type="checkbox" id="kedi1" name="kedi1" value="kedi">
+    <label for="kedi1"> Kedi Mamaları</label><br>
+    <input type="checkbox" id="kopek1" name="kopek1" value="kopek">
+    <label for="kopek1"> Köpek Mamaları</label><br>
+    <input type="checkbox" id="diger" name="diger" value="diger">
+    <label for="diger"> Diğer</label><br><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+<main>
+    <h2>Mamalarımız</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>İsim</th>
+            <th>Tür</th>
+            <th>Fiyat</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for mama in mamalar %}
+        <tr>
+            <td>{{mama.mama_adi}}</td>
+            <td>{{mama.hayvan_turu}}</td>
+            <td>{{mama.fiyat}}</td>
+            <td>
+                <button style="background-color: blue; color: white; padding: 5px 10px; border: none; cursor: pointer;"
+                        onclick="showAlert()">
+                    Bağışla
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</main>
+</body>
+<script>
+    function showAlert() {
+        alert('Teşekkür Ederiz');
+    }
+</script>
+{% endblock %}
